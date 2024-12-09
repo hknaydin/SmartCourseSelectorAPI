@@ -37,7 +37,7 @@ namespace SmartCourseSelectorWeb.Controllers
         }
 
         // POST: api/AdvisorController
-        [HttpPost]
+        [HttpPost("CreateAdvisor")]
         public async Task<ActionResult<Advisor>> CreateAdvisor(Advisor advisor)
         {
             _context.Advisors.Add(advisor);

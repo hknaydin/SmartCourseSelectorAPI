@@ -4,6 +4,7 @@ using SmartCourseSelectorWeb.Models;
 
 namespace SmartCourseSelectorWeb.Controllers
 {
+    [Controller]
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,12 +22,13 @@ namespace SmartCourseSelectorWeb.Controllers
 
         // POST: Login
         [HttpPost("LoginUser")]
-        public async Task<IActionResult> LoginUser(LoginViewModel model)
+
+        public async Task<ActionResult> LoginUser(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Username == model.Username && u.PasswordHash == model.Password && u.Role == model.Role);
+                    .FirstOrDefaultAsync(u => u.Email == model.Username && u.PasswordHash == model.Password && u.Role == model.Role);
 
                 if (user != null)
                 {
