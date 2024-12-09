@@ -9,7 +9,6 @@
         public int Credit { get; set; }
         public string Department { get; set; }
 
-        // Yeni Kontenjan Alanı
         public int? Quota { get; set; } // NULL olabilir çünkü zorunlu derslerde kullanılmayacak
 
 
