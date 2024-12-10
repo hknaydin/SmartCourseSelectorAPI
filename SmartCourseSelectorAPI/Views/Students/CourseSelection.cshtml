@@ -7,11 +7,59 @@
 <link href="~/css/course-selection.css" rel="stylesheet" />
 <style>
     .content-container {
-        background: #DCDCDC;
+        background: #f8f8f8;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
+
+    .table-container {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+    }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #1af4aa;
+            color: #333;
+            font-weight: bold;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
 </style>
 
-<div class="container">
+<div class="container content-container">
     <div class="student-info">
         <h2>Course Selection</h2>
         <h4>Student Information</h4>
@@ -46,15 +94,15 @@
     }
     else
     {
-        <form method="post" asp-action="SubmitCourseSelection" asp-controller="Students">
-            <div class="course-selection">
-                <table class="table table-bordered">
+        <div class="table-container">
+            <form method="post" asp-action="SubmitCourseSelection" asp-controller="Students">
+                <table>
                     <thead>
                         <tr>
                             <th>Course Name</th>
                             <th>Mandatory</th>
                             <th>Credit</th>
-                            <th>Action</th>
+                            <th>Select</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,10 +119,10 @@
                         }
                     </tbody>
                 </table>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Submit Selection" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <input type="submit" value="Submit Selection" class="btn-primary" />
+                </div>
+            </form>
+        </div>
     }
 </div>

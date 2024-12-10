@@ -1,5 +1,5 @@
 ﻿.container {
-    margin-top: 10px;
+    margin-top: 5px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -13,12 +13,12 @@
 }
 
     .student-info h4 {
-        font-size: 1.2rem;
+        font-size: 0.8rem;
         font-weight: bold;
     }
 
     .student-info p {
-        font-size: 1rem;
+        font-size: 0.8rem;
         line-height: 1.5;
     }
 
@@ -77,4 +77,11 @@
     color: #856404;
     padding: 10px;
     border-radius: 8px;
+}
+.table-container {
+    border: 2px solid #343a40; /* Çerçeve rengi */
+    border-radius: 8px; /* Köşe yuvarlatma */
+    padding: 15px; /* İç boşluk */
+    margin-top: 20px; /* Üstten boşluk */
+    background-color: #ffffff; /* Arka plan rengi */
 }
