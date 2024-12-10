@@ -46,35 +46,38 @@
     }
     else
     {
-        <form method="post" asp-action="SubmitCourseSelection" asp-controller="Students">
-            <div class="course-selection">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Course Name</th>
-                            <th>Mandatory</th>
-                            <th>Credit</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var selection in Model.StudentCourseSelections)
-                        {
+        <div class="table-container">
+            <!-- Yeni kapsayıcı div -->
+            <form method="post" asp-action="SubmitCourseSelection" asp-controller="Students">
+                <div class="course-selection">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>@selection.Course.CourseName</td>
-                                <td>@(selection.Course.IsMandatory ? "Mandatory" : "Elective")</td>
-                                <td>@selection.Course.Credit</td>
-                                <td>
-                                    <input type="checkbox" name="SelectedCourseIds" value="@selection.CourseID" />
-                                </td>
+                                <th>Course Name</th>
+                                <th>Mandatory</th>
+                                <th>Credit</th>
+                                <th>Action</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Submit Selection" class="btn btn-primary" />
-            </div>
-        </form>
+                        </thead>
+                        <tbody>
+                            @foreach (var selection in Model.StudentCourseSelections)
+                            {
+                                <tr>
+                                    <td>@selection.Course.CourseName</td>
+                                    <td>@(selection.Course.IsMandatory ? "Mandatory" : "Elective")</td>
+                                    <td>@selection.Course.Credit</td>
+                                    <td>
+                                        <input type="checkbox" name="SelectedCourseIds" value="@selection.CourseID" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit Selection" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     }
 </div>

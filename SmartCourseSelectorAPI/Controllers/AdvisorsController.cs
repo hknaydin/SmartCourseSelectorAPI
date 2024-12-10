@@ -30,6 +30,23 @@ namespace SmartCourseSelectorWeb.Controllers
             return View(advisor);
         }
 
+        [HttpGet("ViewStudentCourses/{studentId}")]
+        public IActionResult ViewStudentCourses(int studentId)
+        {
+            // Öğrenciyi ve seçtiği dersleri çekiyoruz
+            var student = _context.Students
+                .Include(s => s.StudentCourseSelections)
+                    .ThenInclude(sc => sc.Course)
+                .FirstOrDefault(s => s.StudentID == studentId);
+
+            if (student == null)
+            {
+                return NotFound(new { Message = "Student not found." });
+            }
+
+            return View(student);
+        }
+
         // GET: api/AdvisorController/getAdvisorList
         [HttpGet("getAdvisorList")]
         public async Task<ActionResult<IEnumerable<Advisor>>> GetAdvisors()

@@ -3,6 +3,11 @@
 @{
     ViewData["Title"] = "Approve Courses";
 }
+<style>
+	.content-container {
+		max-width: 75%;
+	}
+</style>
 
 <div class="container">
     <h2>Approve Courses</h2>
@@ -38,7 +43,7 @@
                         <td>@student.StudentID</td>
                         <td>@student.Department</td>
                         <td>
-                            <a asp-controller="Advisors" asp-action="ViewStudentCourses" asp-route-id="@student.StudentID" class="btn btn-primary">
+                            <a asp-controller="Advisors" asp-action="ViewStudentCourses" asp-route-studentId="@student.StudentID" class="btn btn-primary">
                                 View Courses
                             </a>
                         </td>

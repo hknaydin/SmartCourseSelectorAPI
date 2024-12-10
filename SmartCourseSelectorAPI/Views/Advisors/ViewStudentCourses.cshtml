@@ -1,0 +1,53 @@
+﻿@model SmartCourseSelectorWeb.Models.Student
+
+@{
+    ViewData["Title"] = "Student Courses";
+}
+
+<style>
+    .content-container {
+        max-width: 75%;
+    }
+</style>
+
+<div class="container">
+    <h2>Student Courses</h2>
+    <h4>Student Information</h4>
+    <p><strong>Name:</strong> @Model.FirstName @Model.LastName</p>
+    <p><strong>Student ID:</strong> @Model.StudentID</p>
+    <p><strong>Department:</strong> @Model.Department</p>
+
+    <hr />
+
+    @if (Model.StudentCourseSelections == null || !Model.StudentCourseSelections.Any())
+    {
+        <div class="alert alert-warning">
+            No courses have been selected by this student.
+        </div>
+    }
+    else
+    {
+        <h4>Selected Courses</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Credit</th>
+                    <th>Mandatory</th>
+                    <th>Selection Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var courseSelection in Model.StudentCourseSelections)
+                {
+                    <tr>
+                        <td>@courseSelection.Course.CourseName</td>
+                        <td>@courseSelection.Course.Credit</td>
+                        <td>@(courseSelection.Course.IsMandatory ? "Yes" : "No")</td>
+                        <td>@courseSelection.SelectionDate.ToString("d")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
