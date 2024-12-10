@@ -37,33 +37,34 @@
     border: 1px solid #ddd; /* Tablo çerçevesi */
     border-radius: 8px; /* Köşe yuvarlama */
     padding: 10px; /* İç boşluk */
-}
-
-    .course-selection table {
-        width: 100%;
-        background-color: #ffffff;
-        border-collapse: collapse; /* Hücre kenarlarını birleştir */
     }
+
+.course-selection table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+        border-collapse: collapse; /* Hücre kenarlarını birleştir */
+}
 
     .course-selection th,
     .course-selection td {
-        text-align: center;
-        padding: 12px;
+    text-align: center;
+    padding: 12px;
         border: 1px solid #ddd; /* Hücre kenarlarına kenarlık */
-    }
+}
 
-    .course-selection thead {
-        background-color: #343a40;
-        color: white;
-    }
+.course-selection thead {
+    background-color: #343a40;
+    color: white;
+}
 
-    .course-selection tbody tr:nth-child(even) {
-        background-color: #f8f9fa;
-    }
+.course-selection tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
 
-    .course-selection tbody tr:hover {
-        background-color: #e9ecef;
-    }
+.course-selection tbody tr:hover {
+    background-color: #e9ecef;
+}
 
 .form-group {
     margin-top: 20px;
