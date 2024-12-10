@@ -15,6 +15,21 @@ namespace SmartCourseSelectorWeb.Controllers
             _context = context;
         }
 
+        [HttpGet("ApproveCourses")]
+        public IActionResult ApproveCourses(int id)
+        {
+            // Danışman tarafından onaylanacak dersler burada işlenir.
+            var advisor = _context.Advisors
+                .Include(a => a.Students)
+                .FirstOrDefault(a => a.AdvisorID == id);
+
+            if (advisor == null)
+            {
+                return NotFound(new { Message = "Advisor not found." });
+            }
+            return View(advisor);
+        }
+
         // GET: api/AdvisorController/getAdvisorList
         [HttpGet("getAdvisorList")]
         public async Task<ActionResult<IEnumerable<Advisor>>> GetAdvisors()

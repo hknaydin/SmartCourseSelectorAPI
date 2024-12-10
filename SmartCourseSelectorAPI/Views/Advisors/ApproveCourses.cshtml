@@ -1,0 +1,50 @@
+﻿@model SmartCourseSelectorWeb.Models.Advisor
+
+@{
+    ViewData["Title"] = "Approve Courses";
+}
+
+<div class="container">
+    <h2>Approve Courses</h2>
+    <h4>Advisor Information</h4>
+    <p><strong>Name:</strong> @Model.FullName @Model.Title</p>
+    <p><strong>Department:</strong> @Model.Department</p>
+
+    <hr />
+
+    @if (Model.Students == null || !Model.Students.Any())
+    {
+        <div class="alert alert-warning">
+            No students are assigned to you.
+        </div>
+    }
+    else
+    {
+        <h4>Student List</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student ID</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td>@student.FirstName @student.LastName</td>
+                        <td>@student.StudentID</td>
+                        <td>@student.Department</td>
+                        <td>
+                            <a asp-controller="Advisors" asp-action="ViewStudentCourses" asp-route-id="@student.StudentID" class="btn btn-primary">
+                                View Courses
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

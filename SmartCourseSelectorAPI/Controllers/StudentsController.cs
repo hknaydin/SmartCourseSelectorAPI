@@ -6,7 +6,7 @@ namespace SmartCourseSelectorWeb.Controllers
 {
     [Route("api/StudentController")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
@@ -14,6 +14,29 @@ namespace SmartCourseSelectorWeb.Controllers
         {
             _context = context;
         }
+
+        [HttpGet("CourseSelection")]
+        public async Task<IActionResult> CourseSelection(int id)
+        {
+            // Öğrenci, ders seçimleri ve danışmanı al
+            var student = await _context.Students
+                                         .Include(s => s.StudentCourseSelections)
+                                             .ThenInclude(sc => sc.Course)
+                                         .Include(s => s.Advisor) // Advisor bilgisi dahil edildi
+                                         .FirstOrDefaultAsync(s => s.StudentID == id);
+
+
+            // Eğer öğrenci bulunamazsa hata mesajı gönderin
+            if (student == null)
+            {
+                ViewBag.Message = "Student not found.";
+                return View(); // Boş bir View döner
+            }
+
+            // Öğrenci modelini View'a gönderin
+            return View(student); // Student modelini gönderiyoruz
+        }
+
 
         // GET: api/Students
         [HttpGet("getStudentList")]

@@ -35,11 +35,11 @@ namespace SmartCourseSelectorWeb.Controllers
                     // Kullanıcı başarıyla giriş yaptı
                     if (user.Role == "Student")
                     {
-                        return RedirectToAction("CourseSelection", "Student", new { id = user.RelatedID });
+                        return RedirectToAction("CourseSelection", "Students", new { id = user.RelatedID });
                     }
                     else if (user.Role == "Advisor")
                     {
-                        return RedirectToAction("ApproveCourses", "Advisor", new { id = user.RelatedID });
+                        return RedirectToAction("ApproveCourses", "Advisors", new { id = user.RelatedID });
                     }
                 }
                 else
