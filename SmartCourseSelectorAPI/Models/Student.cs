@@ -8,6 +8,7 @@
         public string Email { get; set; }
         public int? AdvisorID { get; set; }
         public DateTime EnrollmentDate { get; set; }
+        public string Department { get; set; } // Yeni eklenen özellik
 
         // Navigation Properties
         public ICollection<StudentCourseSelection> StudentCourseSelections { get; set; } = new List<StudentCourseSelection>();

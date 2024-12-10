@@ -1,0 +1,61 @@
+﻿@model SmartCourseSelectorWeb.Models.Student
+
+@{
+    ViewData["Title"] = "Course Selection";
+}
+
+<link href="~/css/course-selection.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="student-info">
+        <h2>Course Selection</h2>
+        <h4>Student Information</h4>
+        <p><strong>Name:</strong> @Model.FirstName @Model.LastName</p>
+        <p><strong>Student ID:</strong> @Model.StudentID</p>
+        <p><strong>Department:</strong> @Model.Department</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Enrollment Date:</strong> @Model.EnrollmentDate.ToString("d")</p>
+        <hr />
+    </div>
+
+    <!-- Ders seçim tablosu -->
+    @if (Model.StudentCourseSelections == null || !Model.StudentCourseSelections.Any())
+    {
+        <div class="alert alert-warning">
+            No available courses for selection.
+        </div>
+    }
+    else
+    {
+        <form method="post" asp-action="SubmitCourseSelection" asp-controller="Student">
+            <div class="course-selection">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Mandatory</th>
+                            <th>Credit</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var selection in Model.StudentCourseSelections)
+                        {
+                            <tr>
+                                <td>@selection.Course.CourseName</td>
+                                <td>@(selection.Course.IsMandatory ? "Mandatory" : "Elective")</td>
+                                <td>@selection.Course.Credit</td>
+                                <td>
+                                    <input type="checkbox" name="SelectedCourseIds" value="@selection.CourseID" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit Selection" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+</div>
