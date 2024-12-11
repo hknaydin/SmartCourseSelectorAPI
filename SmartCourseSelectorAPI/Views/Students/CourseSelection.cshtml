@@ -95,6 +95,7 @@
     else
     {
         <div class="table-container">
+<<<<<<< HEAD
             <form method="post" asp-action="SubmitCourseSelection" asp-controller="Students">
                 <table>
                     <thead>
@@ -108,19 +109,45 @@
                     <tbody>
                         @foreach (var selection in Model.StudentCourseSelections)
                         {
+=======
+            <!-- Yeni kapsayıcı div -->
+            <form method="post" asp-action="SubmitCourseSelection" asp-controller="Students">
+                <div class="course-selection">
+                    <table class="table table-bordered">
+                        <thead>
+>>>>>>> 370667004a944bf2ffb745fbde67c0189552d11a
                             <tr>
-                                <td>@selection.Course.CourseName</td>
-                                <td>@(selection.Course.IsMandatory ? "Mandatory" : "Elective")</td>
-                                <td>@selection.Course.Credit</td>
-                                <td>
-                                    <input type="checkbox" name="SelectedCourseIds" value="@selection.CourseID" />
-                                </td>
+                                <th>Course Name</th>
+                                <th>Mandatory</th>
+                                <th>Credit</th>
+                                <th>Action</th>
                             </tr>
+<<<<<<< HEAD
                         }
                     </tbody>
                 </table>
                 <div class="form-group">
                     <input type="submit" value="Submit Selection" class="btn-primary" />
+=======
+                        </thead>
+                        <tbody>
+                            @foreach (var selection in Model.StudentCourseSelections)
+                            {
+                                <tr>
+                                    <td>@selection.Course.CourseName</td>
+                                    <td>@(selection.Course.IsMandatory ? "Mandatory" : "Elective")</td>
+                                    <td>@selection.Course.Credit</td>
+                                    <td>
+                                        <input type="checkbox" name="SelectedCourseIds" value="@selection.CourseID" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit Selection" class="btn btn-primary" />
+>>>>>>> 370667004a944bf2ffb745fbde67c0189552d11a
                 </div>
             </form>
         </div>
